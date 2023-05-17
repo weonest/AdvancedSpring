@@ -47,11 +47,28 @@ class UserTest {
         // 람다
         // Arrays.sort(users, (o1, o2) -> Integer.compare(o1.age, o2.age));
         // 문자열 비교
-         Arrays.sort(users, (o1, o2) -> o1.name.compareTo(o2.name));
+//         Arrays.sort(users, (o1, o2) -> o1.name.compareTo(o2.name));
 
+
+         // 정렬 기준이 한 가지 이상인 경우 or 여러 가지로 보고 싶은 경우
+        Arrays.sort(users, Comparator.comparing(UserComparator::getName));
         for (UserComparator u : users) {
             log.info("{} {}", u.name, u.age);
         }
+        System.out.println("\n");
+
+        Arrays.sort(users, Comparator.comparing(UserComparator::getAge));
+        for (UserComparator u : users) {
+            log.info("{} {}", u.name, u.age);
+        }
+        System.out.println("\n");
+
+        Arrays.sort(users, Comparator.comparing(UserComparator::getAge)
+                .thenComparing(UserComparator::getName));
+        for (UserComparator u : users) {
+            log.info("{} {}", u.name, u.age);
+        }
+        System.out.println("\n");
     }
 
 }
