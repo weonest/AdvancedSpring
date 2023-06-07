@@ -50,7 +50,7 @@ class UserTest {
 //         Arrays.sort(users, (o1, o2) -> o1.name.compareTo(o2.name));
 
 
-         // 정렬 기준이 한 가지 이상인 경우 or 여러 가지로 보고 싶은 경우
+         // 정렬 기준이 한 가지 이상인 경우 or 여러 가지로 보고 싶은 경우 / 한 가지도 가능
         Arrays.sort(users, Comparator.comparing(UserComparator::getName));
         for (UserComparator u : users) {
             log.info("{} {}", u.name, u.age);
