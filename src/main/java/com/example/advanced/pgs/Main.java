@@ -6,23 +6,9 @@ package com.example.advanced.pgs;
 public class Main {
 
     public static void main(String[] args) {
-        // 설정파일에 의해 동작하도록 할 수 있다
-        
-        new Main().run(LoginType.Naver);
+        UserService userService = new UserService(new KakaoLogin());
+        userService.login();
 
     }
-
-    public void run(LoginType type) {
-        // 타입을 Login으로 함으로써 얕은 결합도를 지니게 된다
-        Login user = getLogin(type);
-        user.login();
-    }
-
-    //factory 패턴
-    private Login getLogin(LoginType type) {
-        if (type == LoginType.Kakao) return new KakaoLogin();
-        return new NaverLogin();
-    }
-
 
 }
